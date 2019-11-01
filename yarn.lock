@@ -512,6 +512,11 @@
     object-hash "2.0.0"
     uuid "3.3.3"
 
+"@nestjs/passport@^6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/passport/-/passport-6.1.0.tgz#80da326cc976a82530648d8025b04c8e2d41c10e"
+  integrity sha512-V4KdtFFLsdZQ/HlIECpiK6byzGz57Y12TAc+Iatykk8jWuVFE1jq8RJbpTfB0zG0PTfcGm9crQ6Ut2Rwdmis4Q==
+
 "@nestjs/platform-express@^6.8.5":
   version "6.8.5"
   resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-6.8.5.tgz#898317e364047cd197887ca0a283c3567030b772"

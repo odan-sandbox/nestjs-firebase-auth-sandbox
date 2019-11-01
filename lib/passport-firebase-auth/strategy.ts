@@ -8,12 +8,18 @@ export interface FirebaseAuthStrategyOptions {
 
 export class FirebaseAuthStrategy extends Strategy {
   private readonly options: FirebaseAuthStrategyOptions;
+  public readonly name = "firebase-auth";
   public constructor(options: FirebaseAuthStrategyOptions) {
     super();
     this.options = options;
   }
   public authenticate(req: Request) {
-    const idToken = this.options.extractor(req);
+    let idToken: string;
+    try {
+      idToken = this.options.extractor(req);
+    } catch (err) {
+      return this.fail({ err }, 401);
+    }
 
     auth()
       .verifyIdToken(idToken)

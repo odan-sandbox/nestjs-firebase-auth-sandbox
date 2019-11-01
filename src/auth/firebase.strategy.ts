@@ -19,11 +19,13 @@ export class FirebaseStrategy extends PassportStrategy(FirebaseAuthStrategy) {
     });
   }
 
-  public async validate(payload: any) {
+  public async validate(payload: admin.auth.DecodedIdToken) {
     if (!payload) {
       throw new UnauthorizedException();
     }
 
-    return payload;
+    const user = await admin.auth().getUser(payload.uid);
+
+    return user;
   }
 }

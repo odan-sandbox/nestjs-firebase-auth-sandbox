@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+
+</head>
+
+<body>
+  <div id="app">
+    <div id="firebaseui-auth-container"></div>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAwzoHUEFsYBBreoCerCRGn2pA1_l8TU3E",
+      authDomain: "nestjs-firebase-auth-sandbox.firebaseapp.com",
+      databaseURL: "https://nestjs-firebase-auth-sandbox.firebaseio.com",
+      projectId: "nestjs-firebase-auth-sandbox",
+      storageBucket: "nestjs-firebase-auth-sandbox.appspot.com",
+      messagingSenderId: "938517805857",
+      appId: "1:938517805857:web:51b3fa598566bc589f1c60"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <script>
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    ui.start('#firebaseui-auth-container', {
+      callbacks: {
+        signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+          console.log(authResult, redirectUrl)
+          firebase.auth().currentUser.getIdToken(true).then(function(idToken) {
+            console.log(idToken)
+          })
+          return false;
+        },
+      },
+      signInOptions: [
+        {
+          provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          requireDisplayName: false
+        }
+      ],
+    });
+  </script>
+</body>
+
+</html>

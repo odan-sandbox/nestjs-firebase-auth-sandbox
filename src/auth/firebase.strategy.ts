@@ -7,9 +7,9 @@ import {
   fromHeaderExtractor
 } from "../../lib/passport-firebase-auth";
 
-const projectId = "nestjs-firebase-auth-sandbox";
+// const projectId = "nestjs-firebase-auth-sandbox";
 
-admin.initializeApp({ projectId });
+// admin.initializeApp({ projectId });
 
 @Injectable()
 export class FirebaseStrategy extends PassportStrategy(FirebaseAuthStrategy) {

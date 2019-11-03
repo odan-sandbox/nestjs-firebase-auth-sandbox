@@ -6,6 +6,7 @@ import { LoggerModule } from "nestjs-pino";
 
 import { AppController } from "./app.controller";
 import { AuthModule } from "./auth/auth.module";
+import { Auth2Module } from './auth2/auth2.module';
 
 @Module({
   imports: [
@@ -13,7 +14,8 @@ import { AuthModule } from "./auth/auth.module";
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, "..", "..", "public")
     }),
-    LoggerModule.forRoot()
+    LoggerModule.forRoot(),
+    Auth2Module
   ],
   controllers: [AppController],
   providers: []

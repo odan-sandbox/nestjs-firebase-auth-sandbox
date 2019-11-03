@@ -1,5 +1,5 @@
 import { Controller, Get, UseGuards, Request } from "@nestjs/common";
-import { AuthGuard } from "@nestjs/passport";
+import { Auth2Guard } from "./auth2/auth2.guard";
 
 @Controller("api")
 export class AppController {
@@ -9,7 +9,7 @@ export class AppController {
   }
 
   @Get("private")
-  @UseGuards(AuthGuard("firebase-auth"))
+  @UseGuards(Auth2Guard)
   public private(@Request() req: Request) {
     console.log(req);
     return "Hello!!!";

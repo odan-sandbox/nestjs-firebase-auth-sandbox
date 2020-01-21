@@ -2,7 +2,7 @@
 NestJS で Firebase Auth を使うお試し
 
 ## 試し方
-- サーバを立ち上げる
+- yarn dev
 - http://localhost:3000 にアクセス
 - 適当にアカウントを作る
 - ログインする

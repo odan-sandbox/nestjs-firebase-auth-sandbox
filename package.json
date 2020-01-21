@@ -22,6 +22,7 @@
     "typescript": "^3.5.3"
   },
   "scripts": {
+    "dev": "nest start --watch | pino-pretty",
     "build": "tsc -p tsconfig.build.json",
     "test": "run-p test:*",
     "test:build": "yarn build --noEmit",

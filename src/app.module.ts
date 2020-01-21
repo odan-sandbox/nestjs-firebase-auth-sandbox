@@ -6,7 +6,7 @@ import { LoggerModule } from "nestjs-pino";
 
 import { AppController } from "./app.controller";
 import { AuthModule } from "./auth/auth.module";
-import { Auth2Module } from './auth2/auth2.module';
+import { Auth2Module } from "./auth2/auth2.module";
 
 @Module({
   imports: [

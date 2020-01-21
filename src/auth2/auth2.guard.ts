@@ -6,9 +6,10 @@ import {
   Logger
 } from "@nestjs/common";
 import { Request } from "express";
+import { config } from "node-config-ts";
 import admin from "firebase-admin";
 
-const projectId = "nestjs-firebase-auth-sandbox";
+const projectId = config.projectId;
 admin.initializeApp({ projectId });
 
 @Injectable()
@@ -30,9 +31,12 @@ export class Auth2Guard implements CanActivate {
 
     this.logger.log(decodedIdToken);
 
+    // getUser にするには firebase の credential が必要
     // const user = await admin.auth().getUser(decodedIdToken.uid);
-
     //request["user"] = user;
+
+    // decodedIdToken と getUser の返り値のどっちを使うべきかはプロジェクト次第
+    request["user"] = decodedIdToken;
 
     return true;
   }

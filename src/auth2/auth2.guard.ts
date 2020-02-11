@@ -12,6 +12,14 @@ import admin from "firebase-admin";
 const projectId = config.projectId;
 admin.initializeApp({ projectId });
 
+declare module "express" {
+  interface Request {
+    user: {
+      uid: string;
+    };
+  }
+}
+
 @Injectable()
 export class Auth2Guard implements CanActivate {
   private logger: Logger = new Logger("Auth2");
@@ -36,7 +44,10 @@ export class Auth2Guard implements CanActivate {
     //request["user"] = user;
 
     // decodedIdToken と getUser の返り値のどっちを使うべきかはプロジェクト次第
-    request["user"] = decodedIdToken;
+
+    request.user = {
+      uid: decodedIdToken.uid
+    };
 
     return true;
   }

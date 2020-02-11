@@ -13,10 +13,14 @@ const projectId = config.projectId;
 admin.initializeApp({ projectId });
 
 declare module "express" {
+  type User =
+    | {
+        isLogin: true;
+        uid: string;
+      }
+    | { isLogin: false };
   interface Request {
-    user: {
-      uid: string;
-    };
+    user: User;
   }
 }
 
@@ -46,6 +50,7 @@ export class Auth2Guard implements CanActivate {
     // decodedIdToken と getUser の返り値のどっちを使うべきかはプロジェクト次第
 
     request.user = {
+      isLogin: true,
       uid: decodedIdToken.uid
     };
 
